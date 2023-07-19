@@ -1,23 +1,24 @@
 #include <stdio.h>
 
 /**
- * main - prints numbers from 0 to 9
+ * main - causes an infinite loop
  * Return: 0
  */
 
 int main(void)
 {
+int i;
 
-char i;
+printf("Infinite loop incoming :(\n");
 
-printf("Numbers from 0 to 9:\n");
+i = '0';
 
-for (i = '0'; i <= '9'; i++)
-{
-	putchar(i);
-}
+ /*while (i < 10)*/
+ /*{*/
+ /* putchar(i);*/
+ /*}*/
 
-putchar('\n');
+printf("Infinite loop avoided! \\o/\n");
 
 return (0);
 }
