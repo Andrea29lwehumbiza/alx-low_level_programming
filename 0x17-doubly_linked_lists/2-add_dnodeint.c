@@ -7,35 +7,31 @@
  * @n: value of the element
  * Return: the address of the new element
  */
-typedef struct dlistint_s
-{
-	int n;
-	struct dlistint_s *prev;
-	struct dlistint_s *next;
-} dlistint_t;
-
 dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
-	if (!head)
+	dlistint_t *new;
+	dlistint_t *h;
+
+	new = malloc(sizeof(dlistint_t));
+	if (new == NULL)
+		return (NULL);
+
+	new->n = n;
+	new->prev = NULL;
+	h = *head;
+
+	if (h != NULL)
 	{
-		return NULL;
+		while (h->prev != NULL)
+			h = h->prev;
 	}
 
-	dlistint_t *new_node = malloc(sizeof(dlistint_t));
-	if (!new_node)
-	{
-		return NULL;
-	}
+	new->next = h;
 
-	new_node->n = n;
-	new_node->prev = NULL;
-	new_node->next = *head;
+	if (h != NULL)
+		h->prev = new;
 
-	if (*head)
-	{
-		(*head)->prev = new_node;
-	}
+	*head = new;
 
-	*head = new_node;
-	return new_node;
+	return (new);
 }
